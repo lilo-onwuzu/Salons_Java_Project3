@@ -6,22 +6,9 @@ import org.sql2o.*;
 
 public class ClientTest {
 
-  // add rule to connect to the database before each Test and store objects created within each test there
-  @Before
-  public void setUp() {
-    DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/hair_salon_test", null, null);
-  }
-
-  // add rule to delete objects created in the database after each test
-  @After
-  public void tearDown() {
-    try(Connection con = DB.sql2o.open()) {
-      String deleteStylists = "DELETE FROM stylists *;";
-      String deleteClients = "DELETE FROM clients *;";
-      con.createQuery(deleteStylists).executeUpdate();
-      con.createQuery(deleteClients).executeUpdate();
-    }
-  }
+  // add rule to connect to the database before each Test and store objects created within each test there. Also add rule to delete all test objects created in the hair_salon_test database after each test
+  @Rule
+  public DatabaseRule database = new DatabaseRule();
 
   @Test
   public void Client_instantiatesCorrectly_true(){

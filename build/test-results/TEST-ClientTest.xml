@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ClientTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2016-05-10T04:45:26" hostname="epicodus-68.local" time="0.08">
+<testsuite name="ClientTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2016-05-10T05:53:10" hostname="epicodus-68.local" time="0.083">
   <properties/>
-  <testcase name="Client_instantiatesCorrectly_true" classname="ClientTest" time="0.074"/>
+  <testcase name="Client_instantiatesCorrectly_true" classname="ClientTest" time="0.077"/>
   <testcase name="Client_instantiatedwithString_String" classname="ClientTest" time="0.006"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
