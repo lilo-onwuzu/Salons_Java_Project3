@@ -1,11 +1,8 @@
 import org.junit.*;
 import static org.junit.Assert.*;
 import org.sql2o.*;
-import java.util.List;
 
 public class StylistTest{
-
-
   // add rule to connect to the database before each Test and store objects created within each test there Also add rule to delete objects created in the database after each test
   @Rule
   public DatabaseRule database = new DatabaseRule();
@@ -38,7 +35,7 @@ public class StylistTest{
   }
 
   @Test
-  public void save_savesStylistToDatabase_True(){
+  public void save_savesStylistToDatabase_true(){
     Stylist testStylist = new Stylist("Stylist");
     testStylist.save();
     assertTrue(Stylist.all().get(0).equals(testStylist));
@@ -46,7 +43,7 @@ public class StylistTest{
 
   @Test
   // check that the database saves the Stylist object instance with the same id that was passed to it in the save() method
-  public void saveStylist_assignsIdToObject() {
+  public void saveStylist_assignsIdToObject_true() {
     Stylist testStylist = new Stylist("Stylist");
     testStylist.save();
     Stylist savedStylist = Stylist.all().get(0);
@@ -54,7 +51,7 @@ public class StylistTest{
   }
 
   @Test
-  public void find_findStylistInDatabase() {
+  public void find_findStylistInDatabase_true() {
     Stylist testStylist = new Stylist("Stylist");
     testStylist.save();
     Stylist savedStylist = Stylist.find(testStylist.getId());
