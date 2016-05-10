@@ -1,0 +1,29 @@
+BDD TEST SPECIFICATIONS
+Definition Class Unit Tests:
+Definition Class can be instantiated/
+Definition Class can be Instantiated with String/
+Test that the date of word definition creation can be accessed
+Clear method empties all definitions
+
+Word Class Unit Tests:
+Word Class Instantiates/
+Word Instantiates with Name/
+One word can be added to wordArray/
+Multiple words can be added to wordArray/
+A definition is a method of a word class/
+Multiple definitions can be added to a word object/
+User can view a word's definition
+User can view multiple word definitions
+Test that homepage displays full list of words
+Date of word creation can be accessed
+Clear method empties all words
+
+Integration Tests:
+Home page UI works/
+User's name is collected and customized home page works/
+User's name posts correctly to the session/
+A word can be added to the list/
+Multiple words can be added to the list/
+A definition can be added to the list for one word/
+Multiple definitions can be added to the list for one word/
+Multiple definitions can be added to the list for multiple words/
