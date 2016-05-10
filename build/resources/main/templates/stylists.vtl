@@ -1,0 +1,15 @@
+#if ($stylists.size() != 0)
+  <strong>Click on the Stylists below to see their full list of Clients</strong>
+  <ol>
+    #foreach ($stylist in $stylists)
+      <li class="clickToView"><a href="/stylists/$stylist.getId()">$stylist.getName()</a></li>
+    #end
+  </ol>
+#else
+  <em>There are currently no Stylists to display!</em>
+#end
+
+<p></p>
+<a href="/stylists/new" class="clickToView"><em>Add New Stylist</em></a>
+<p></p>
+<a href="/stylists" class="clickToView"><em>Full List of Stylists</em></a>

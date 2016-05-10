@@ -1,13 +1,13 @@
 public class Client {
-  private String mName;
+  private String name;
   private int client_id;
 
   public Client(String name){
-    mName = name;
+    this.name = name;
   }
 
-  public String getName(){
-    return mName;
+  public String getClient(){
+    return name;
   }
 
 }
