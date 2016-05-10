@@ -10,4 +10,8 @@ public class Client {
     return name;
   }
 
+  public int getId() {
+    return client_id;
+  }
+
 }
