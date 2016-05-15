@@ -85,4 +85,15 @@ public class Stylist {
         .executeUpdate();
     }
   }
+
+    // getClients() method for stylists/clients one to many relationship
+  public List<Client> getClients() {
+    // select all rows from clients where stylist id equals the this.id
+    String sql = "SELECT * FROM clients where id=:id";
+    try (Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql)
+        .addParameter("id", this.id)
+        .executeAndFetch(Client.class);
+    }
+  }
 }

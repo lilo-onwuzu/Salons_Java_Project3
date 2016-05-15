@@ -34,18 +34,19 @@ SET default_with_oids = false;
 --
 
 CREATE TABLE clients (
+    id integer NOT NULL,
     name character varying,
-    client_id integer NOT NULL
+    stylist_id integer
 );
 
 
 ALTER TABLE clients OWNER TO "Guest";
 
 --
--- Name: clients_client_id_seq; Type: SEQUENCE; Schema: public; Owner: Guest
+-- Name: clients_id_seq; Type: SEQUENCE; Schema: public; Owner: Guest
 --
 
-CREATE SEQUENCE clients_client_id_seq
+CREATE SEQUENCE clients_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -53,13 +54,13 @@ CREATE SEQUENCE clients_client_id_seq
     CACHE 1;
 
 
-ALTER TABLE clients_client_id_seq OWNER TO "Guest";
+ALTER TABLE clients_id_seq OWNER TO "Guest";
 
 --
--- Name: clients_client_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Guest
+-- Name: clients_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Guest
 --
 
-ALTER SEQUENCE clients_client_id_seq OWNED BY clients.client_id;
+ALTER SEQUENCE clients_id_seq OWNED BY clients.id;
 
 
 --
@@ -67,18 +68,18 @@ ALTER SEQUENCE clients_client_id_seq OWNED BY clients.client_id;
 --
 
 CREATE TABLE stylists (
-    name character varying,
-    stylist_id integer NOT NULL
+    id integer NOT NULL,
+    name character varying
 );
 
 
 ALTER TABLE stylists OWNER TO "Guest";
 
 --
--- Name: stylists_stylist_id_seq; Type: SEQUENCE; Schema: public; Owner: Guest
+-- Name: stylists_id_seq; Type: SEQUENCE; Schema: public; Owner: Guest
 --
 
-CREATE SEQUENCE stylists_stylist_id_seq
+CREATE SEQUENCE stylists_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -86,57 +87,63 @@ CREATE SEQUENCE stylists_stylist_id_seq
     CACHE 1;
 
 
-ALTER TABLE stylists_stylist_id_seq OWNER TO "Guest";
+ALTER TABLE stylists_id_seq OWNER TO "Guest";
 
 --
--- Name: stylists_stylist_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Guest
+-- Name: stylists_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Guest
 --
 
-ALTER SEQUENCE stylists_stylist_id_seq OWNED BY stylists.stylist_id;
-
-
---
--- Name: client_id; Type: DEFAULT; Schema: public; Owner: Guest
---
-
-ALTER TABLE ONLY clients ALTER COLUMN client_id SET DEFAULT nextval('clients_client_id_seq'::regclass);
+ALTER SEQUENCE stylists_id_seq OWNED BY stylists.id;
 
 
 --
--- Name: stylist_id; Type: DEFAULT; Schema: public; Owner: Guest
+-- Name: id; Type: DEFAULT; Schema: public; Owner: Guest
 --
 
-ALTER TABLE ONLY stylists ALTER COLUMN stylist_id SET DEFAULT nextval('stylists_stylist_id_seq'::regclass);
+ALTER TABLE ONLY clients ALTER COLUMN id SET DEFAULT nextval('clients_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: Guest
+--
+
+ALTER TABLE ONLY stylists ALTER COLUMN id SET DEFAULT nextval('stylists_id_seq'::regclass);
 
 
 --
 -- Data for Name: clients; Type: TABLE DATA; Schema: public; Owner: Guest
 --
 
-COPY clients (name, client_id) FROM stdin;
+COPY clients (id, name, stylist_id) FROM stdin;
 \.
 
 
 --
--- Name: clients_client_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
+-- Name: clients_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('clients_client_id_seq', 1, false);
+SELECT pg_catalog.setval('clients_id_seq', 1, false);
 
 
 --
 -- Data for Name: stylists; Type: TABLE DATA; Schema: public; Owner: Guest
 --
 
-COPY stylists (name, stylist_id) FROM stdin;
+COPY stylists (id, name) FROM stdin;
+1	Jane Doe
+2	Prince Williams
+3	Michelle Parker
+4	Michelle Parker
+5	Michelle Parker
+6	Michelle Parker
 \.
 
 
 --
--- Name: stylists_stylist_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
+-- Name: stylists_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('stylists_stylist_id_seq', 2, true);
+SELECT pg_catalog.setval('stylists_id_seq', 6, true);
 
 
 --
@@ -144,7 +151,7 @@ SELECT pg_catalog.setval('stylists_stylist_id_seq', 2, true);
 --
 
 ALTER TABLE ONLY clients
-    ADD CONSTRAINT clients_pkey PRIMARY KEY (client_id);
+    ADD CONSTRAINT clients_pkey PRIMARY KEY (id);
 
 
 --
@@ -152,7 +159,7 @@ ALTER TABLE ONLY clients
 --
 
 ALTER TABLE ONLY stylists
-    ADD CONSTRAINT stylists_pkey PRIMARY KEY (stylist_id);
+    ADD CONSTRAINT stylists_pkey PRIMARY KEY (id);
 
 
 --

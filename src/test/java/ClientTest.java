@@ -11,13 +11,13 @@ public class ClientTest {
 
   @Test
   public void Client_instantiatesCorrectly_true(){
-    Client testClient = new Client("client");
+    Client testClient = new Client("client", 2);
     assertEquals(true, testClient instanceof Client);
   }
 
   @Test
   public void Client_instantiatedwithString_String(){
-    Client testClient = new Client("client");
+    Client testClient = new Client("client", 2);
     assertEquals("client", testClient.getName());
   }
 
@@ -28,21 +28,21 @@ public class ClientTest {
 
   @Test
   public void equals_returnsTrueIfDescriptionsAreTheSame_true() {
-    Client firstClient = new Client("client1");
-    Client secondClient = new Client("client1");
+    Client firstClient = new Client("client1", 2);
+    Client secondClient = new Client("client1", 2);
     assertTrue(firstClient.equals(secondClient));
   }
 
   @Test
   public void save_savesObjectIntoDatabase_true() {
-    Client testClient = new Client("client");
+    Client testClient = new Client("client", 2);
     testClient.save();
     assertTrue(Client.all().get(0).equals(testClient));
   }
 
   @Test
   public void save_assignsIdToObject_int() {
-    Client testClient = new Client("client");
+    Client testClient = new Client("client", 2);
     testClient.save();
     Client savedClient = Client.all().get(0);
     assertEquals(testClient.getId(), savedClient.getId());
@@ -50,7 +50,7 @@ public class ClientTest {
 
   @Test
   public void find_findClientInDatabase_true() {
-    Client testClient = new Client("client");
+    Client testClient = new Client("client", 2);
     testClient.save();
     Client savedClient = Client.all().get(0);
     assertEquals(savedClient, Client.find(testClient.getId()));
@@ -58,15 +58,23 @@ public class ClientTest {
 
   @Test
   public void update_updateClientNameInDatabase_true() {
-    Client testClient = new Client("client");
+    Client testClient = new Client("client", 2);
     testClient.save();
     testClient.update("other client");
     assertEquals("other client", Client.find(testClient.getId()).getName());
   }
 
   @Test
+  public void updateStylistId_updateStylistIdInDatabase_true() {
+    Client testClient = new Client("client", 2);
+    testClient.save();
+    testClient.updateStylistId(4);
+    assertEquals(4, Client.find(testClient.getId()).getStylistId());
+  }
+
+  @Test
   public void deleteClients_deletesClientsfromDatabase_true() {
-    Client myClient = new Client("Bram Stoker");
+    Client myClient = new Client("Bram Stoker", 2);
     myClient.save();
     myClient.delete();
     assertEquals(0, myClient.all().size());
