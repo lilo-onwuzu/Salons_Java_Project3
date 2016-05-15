@@ -16,7 +16,7 @@ public class StylistTest{
   @Test
   public void getStylist_instantiatesWithName_String(){
     Stylist testStylist = new Stylist("Stylist");
-    assertEquals("Stylist", testStylist.getStylist());
+    assertEquals("Stylist", testStylist.getName());
   }
 
   @Test
@@ -56,6 +56,22 @@ public class StylistTest{
     testStylist.save();
     Stylist savedStylist = Stylist.find(testStylist.getId());
     assertTrue(testStylist.equals(savedStylist));
+  }
+
+  @Test
+  public void update_updateStylistNameInDatabase_true() {
+    Stylist testStylist = new Stylist("stylist");
+    testStylist.save();
+    testStylist.update("other stylist");
+    assertEquals("other stylist", Stylist.find(testStylist.getId()).getName());
+  }
+
+  @Test
+  public void deleteStylists_deletesStylistsfromDatabase_true() {
+    Stylist myStylist = new Stylist("Bram Stoker");
+    myStylist.save();
+    myStylist.delete();
+    assertEquals(0, myStylist.all().size());
   }
 
 }
