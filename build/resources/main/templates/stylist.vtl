@@ -1,15 +1,12 @@
 <p><strong>$stylist.getName()</strong><p>
+  <p>$stylist.getName() has $stylist.getClients().size() clients. <a href="/stylists/$stylist.getId()/clients">Client List</a></p><br>
 
-#if ($clients.size() != 0)
-  <ul>
-    #foreach ($client in $clients)
-    <li>$client.getName()</li>
-    #end
-  </ul>
-#else
-  <p><em>No clients have been added for $stylist.getName()!</em><p>
-#end
-
-<br><a href="/stylists/new" class="clickToView">Add New Stylist</a>
+<a href="/stylists/$stylist.getId()/remove">Remove this Stylist<a>
 <strong class="clickToView">|</strong>
-<a href="/stylists" class="clickToView">Full List of Stylists</a>
+<a href="/stylists/$stylist.getId()/edit">Edit this Stylist's Name<a><br>
+
+<a href="/stylists/$stylist.getId()/clients/new">Add New Client For $stylist.getName()</a><br>
+
+<a href="/stylists/new">Add New Stylist</a>
+<strong class="clickToView">|</strong>
+<a href="/stylists">Full List of Stylists</a>

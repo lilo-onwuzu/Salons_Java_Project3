@@ -22,6 +22,12 @@ public class ClientTest {
   }
 
   @Test
+  public void getStylistId_returnsStylistIdCorrectly() {
+    Client testClient = new Client("client", 2);
+    assertEquals(2, testClient.getStylistId());
+  }
+
+  @Test
   public void all_EmptyAtFirst_true() {
     assertEquals(0, Client.all().size());
   }

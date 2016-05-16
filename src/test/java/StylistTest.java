@@ -1,6 +1,8 @@
 import org.junit.*;
 import static org.junit.Assert.*;
 import org.sql2o.*;
+import java.util.List;
+import java.util.Arrays;
 
 public class StylistTest{
   // add rule to connect to the database before each Test and store objects created within each test there Also add rule to delete objects created in the database after each test
@@ -68,10 +70,21 @@ public class StylistTest{
 
   @Test
   public void deleteStylists_deletesStylistsfromDatabase_true() {
-    Stylist myStylist = new Stylist("Bram Stoker");
-    myStylist.save();
-    myStylist.delete();
-    assertEquals(0, myStylist.all().size());
+    Stylist testStylist = new Stylist("Bram Stoker");
+    testStylist.save();
+    testStylist.delete();
+    assertEquals(0, testStylist.all().size());
   }
 
+  @Test
+  public void getClients_getClientsReturnsAllClientsForThisStylist_true() {
+    Stylist testStylist = new Stylist("stylist");
+    testStylist.save();
+    Client testClient1 = new Client("client", testStylist.getId());
+    testClient1.save();
+    Client testClient2 = new Client("client", testStylist.getId());
+    testClient2.save();
+    Client[] clients = new Client[] { testClient1, testClient2 };
+    assertTrue(testStylist.getClients().containsAll(Arrays.asList(clients)));
+  }
 }

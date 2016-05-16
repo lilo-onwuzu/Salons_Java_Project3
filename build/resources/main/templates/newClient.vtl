@@ -1,11 +1,9 @@
-<form action="/stylists/:id" method="post">
+<form action="/stylists/$stylist.getId()/clients" method="post">
   <label for="inputClient">Add Client Name:</label>
   <input id="inputClient" name="inputClient" type="text">
   <button type="submit" class="btn btn-info">Enter</button>
 </form><br>
 
-<a href="/clients/new" class="clickToView">Add New Client</a>
+<a href="/stylists/new">Add New Stylist</a>
 <strong class="clickToView">|</strong>
-<a href="/stylists/new" class="clickToView">Add New Stylist</a>
-<strong class="clickToView">|</strong>
-<a href="/stylists" class="clickToView">Full List of Stylists</a>
+<a href="/stylists">Full List of Stylists</a>
