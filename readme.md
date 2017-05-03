@@ -24,8 +24,6 @@
 #### _Setup/Installation Requirements_
 	Set Up To Run Database Locally On Computer:
 		First clone this repository
-		Install Gradle (a build & test automation program that will manage all our dependencies)
-		Build in the terminal using 'gradle run' command
 		Install Postgres
 		Run "pg_ctl start" in terminal to start running postgres server
 		Run "psql" in a new terminal to access DB
@@ -35,6 +33,8 @@
 		In Terminal:
 			Run "psql hair_salon < hair_salon.sql"
 			Run "psql hair_salon_test < hair_salon_test.sql"
+		Install Gradle (a build & test automation program that will manage all our dependencies)
+		Build in the terminal using 'gradle run' command
 		Open localhost:4567/stylists in any browser to use the web application
 		Interact with the app.
 
