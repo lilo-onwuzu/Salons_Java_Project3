@@ -33,8 +33,8 @@
 		In Terminal:
 			Run "psql hair_salon < hair_salon.sql"
 			Run "psql hair_salon_test < hair_salon_test.sql"
-		Install Gradle (a build & test automation program that will manage all our dependencies)
-		Build in the terminal using 'gradle run' command
+			Install Gradle (a build & test automation program that will manage all our dependencies)
+			Build app using 'gradle run' command
 		Open localhost:4567/stylists in any browser to use the web application
 		Interact with the app.
 
